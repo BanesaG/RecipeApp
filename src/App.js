@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import './App.css';
 
 const DirectoryView = (props) => (
   <div>
-    <SearchForm searchVal={props.searchVal} handleChange={props.handleChange} />
+    <SearchForm searchVal={props.searchVal} selectRecipes={props.selectRecipes} handleChange={props.handleChange} />
     {props.recipes.map((recipe, i) => <RecipeCard name={recipe.name} key={i} />)}
   </div>
 );
@@ -12,10 +12,12 @@ const DirectoryView = (props) => (
 const SearchForm = (props) => (
   <form>
     <input value={props.searchVal} onChange={props.handleChange} />
-    {/* <button>Search</button> */}
-    <button className="btn btn-primary" onClick={props.clickHandler}>Search</button>
+ 
+    <button className="btn btn-primary" onClick={props.selectRecipes}>Search</button>
   </form>
 );
+
+
 
 const RecipeCard = (props) => (
   <div>
@@ -119,11 +121,11 @@ class App extends React.Component{
     ],
     searchVal: '',
     selectedRecipes: [],
-    chosenRecipe: {
+    chosenRecipe: { /* 
       id: '',
       name: '',
       ingredients: [],
-      instructions: []
+      instructions: []*/
     }
   }
 
@@ -133,29 +135,31 @@ class App extends React.Component{
   }
 
   //added
-  selectedRecipes = (event) => { //Setting state based on search function
+  selectRecipes = (event) => { //Setting state based on search function
     event.preventDefault();
-    this.setState({ selectedRecipes: this.state.recipes.filter(recipe => recipe.name.toLowerCase().includes(this.state.searchVal.toLowerCase())) });
+    this.setState({ selectedRecipes: this.state.recipes.filter(recipe => (recipe.name.toLowerCase()).includes((this.state.searchVal).toLowerCase())) , searchVal: ''});
 }
 
-chooseRecipe = (id) => {
-    console.log(id);
-    this.setState({chosenRecipe: this.state.recipes.find(recipe => recipe.id === id)})
+chooseRecipe = (event) => {
+  event.preventDefault();
+  this.setState({chosenRecipe: this.state.recipes.filter(recipe => recipe.name.includes(event.target.innerHTML))}); 
 }
 
-  render() {
-    console.log('I am a recipe')
+// chooseRecipe = (id) => {
+//     console.log(id);
+//     this.setState({chosenRecipe: this.state.recipes.find(recipe => recipe.id === id)})
+// }
+
+  render() { 
     return (
-        <DirectoryView 
-            recipes={this.state.recipes}
-            searchVal={this.state.searchVal}
-            handleChange={this.handleChange}
-        />
+      <div>
+        <DirectoryView recipes={this.state.recipes} searchVal={this.state.searchVal} handleChange={this.handleChange} selectRecipes={this.selectRecipes} selectedRecipes={this.state.selectedRecipes}/>
+      </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
 
 
 
