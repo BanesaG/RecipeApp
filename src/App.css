@@ -1,32 +1,143 @@
 .App {
+  margin: 1%;
+  border: 2px solid #00000061;
+  min-height: 100vh; 
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  font-family: 'Roboto', sans-serif;
+}
+
+.header_div{
+  background-color: #76DCE8;
+  grid-area: 1 / 1 / span 1 / span 2;
+  color: #FFFFFF;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.headertxt{
+  font-size: 1.875em;
+  float: left;
+  font-family: 'Charm', cursive;
+  margin-left: 10px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.logo_img{
+  background-color: #7ED2D2;
+  height: 80px;
+  width: auto;
+  float: left;
+  margin-left: 2%;
+}
+
+
+.directoryView_div{
+  grid-area: 2 / 1 / span 1 / span 1;
+  min-height: auto;
+  border-right: 2px solid #00000061;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 1fr;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+
+.searchForm_div{
+  padding: 1%;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 100px;
+  grid-gap: 10px;
+}
+
+#search{
+  border: 1px solid black;
+  border-radius: 10px;
+  min-width: 70px;
+}
+
+.btn{
+  margin-top: 20%;
   text-align: center;
+  background-color: #7ED2D2;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.recipeCard_div{
+  height: 40px;
+  border: 1px solid black;
+  font-size: 15px;
+  font-weight: bold;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  text-transform: uppercase;
 }
 
-.App-link {
-  color: #61dafb;
+.recipeCard_div:hover{
+  cursor: pointer;
+  background-color: #7ED2D2; 
+} 
+
+
+
+.detailView_div{
+  float: right;
+  grid-area: 2 / 2 / span 1 / span 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.detailView_header{
+  display: grid;
+  grid-template-rows: 150px 1fr;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+}
+
+dl{
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+}
+
+.recipe_image{
+  width: 150px;
+  height: 150px;
+}
+
+h3, h5{
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: slategrey;
+  margin-top: 7%;
+  margin-right: 5
+}
+
+h5{
+  font-size: 15px;
+  color: rgb(110, 110, 110);
+}
+
+
+@media only screen and (min-width: 600px){
+
+  dl{
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+
+  .detailView_header{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 5px;
   }
 }

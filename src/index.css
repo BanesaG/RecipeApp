@@ -12,15 +12,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-#root {
-  border-style: solid;
-  border-color: black;
-}
-
-.btn.btn-primary {
-  background: rgb(9, 200, 222);
-  border-color: rgb(9, 200, 222);
-}
-
-
